@@ -3,12 +3,12 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { Menu, MenuItem } from '@mui/material';
+import { Container, Grid, Menu, MenuItem } from '@mui/material';
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { Location } from '../domains/location';
 import { useState } from 'react';
 
-export const GlobalMenu = (props: { locations: Location[] }): JSX.Element => {
+export const GlobalMenu = (props: { locations: Location[], children: React.ReactNode }): JSX.Element => {
   const [menu, setMenu] = useState<boolean>(false)
 
   return (
@@ -40,6 +40,9 @@ export const GlobalMenu = (props: { locations: Location[] }): JSX.Element => {
           </Typography>
         </Toolbar>
       </AppBar>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        {props.children}
+      </Container>
     </Box>
   )
 }

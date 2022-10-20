@@ -17,7 +17,9 @@ const Home: NextPage = () => {
   }, [renderFlag])
 
   return (
-    <GlobalMenu locations={locations}></GlobalMenu>
+    <GlobalMenu locations={locations}>
+      <></>
+    </GlobalMenu>
   )
 }
 
