@@ -8,7 +8,6 @@ import { getLocations } from '../src/usecases/api'
 
 const Home: NextPage = () => {
   const [renderFlag, setRenderFlag] = useState<boolean>(false)
-  const [presignedUrl, setPresignedUrl] = useState<string>('')
   const [locations, setLocations] = useState<Location[]>([])
 
   useEffect(() => {

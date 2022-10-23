@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { Container, Grid, Menu, MenuItem } from '@mui/material';
+import { Container, Menu, MenuItem } from '@mui/material';
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { Location } from '../domains/location';
 import { useState } from 'react';
