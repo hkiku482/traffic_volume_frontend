@@ -28,9 +28,11 @@ const Home: NextPage = () => {
   const [imageError, setImageError] = useState<boolean>(false)
 
   const [inProgress, setInprogress] = useState<boolean>(true)
+  const [isSending, setIsSending] = useState<boolean>(false)
 
   const handleSubmit = async () => {
     // error handling
+    setIsSending(true)
     let e = false
     if (locationId === '') {
       e = true
@@ -61,12 +63,15 @@ const Home: NextPage = () => {
       }
     )
     setLocationIdError(false)
+    setLocationId('')
     setImageError(false)
+    setImage(null)
+    setIsSending(false)
   }
 
   return (
     <GlobalMenu locations={locations}>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         <Grid item xs={8}>
           {inProgress ? (
             <CircularProgress />
@@ -116,6 +121,15 @@ const Home: NextPage = () => {
           >
             送信
           </Button>
+        </Grid>
+        <Grid item xs={3}>
+          {isSending ?
+            (
+              <CircularProgress />
+            ) : (
+              <></>
+            )
+          }
         </Grid>
 
       </Grid>
