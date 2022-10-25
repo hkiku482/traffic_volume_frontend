@@ -45,7 +45,7 @@ const Home: NextPage = () => {
   }, [locationId])
 
   return (
-    <GlobalMenu locations={locations}>
+    <GlobalMenu locations={locations} header={address}>
       <TrafficVolumeChart
         locationAddress={address}
         models={result.models}

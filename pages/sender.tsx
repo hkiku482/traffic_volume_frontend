@@ -70,7 +70,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <GlobalMenu locations={locations}>
+    <GlobalMenu locations={locations} header={'模擬定点カメラ'}>
       <Grid container spacing={1}>
         <Grid item xs={8}>
           {inProgress ? (
@@ -107,7 +107,11 @@ const Home: NextPage = () => {
                 fileReader.onload = (e) => {
                   setImage(fileReader.result)
                 }
-                fileReader.readAsArrayBuffer(event.target.files[0])
+                try {
+                  fileReader.readAsArrayBuffer(event.target.files[0])
+                } catch (e) {
+                  event.target.files = null
+                }
               }
             }} error={imageError} name='image' type='file' />
             <FormHelperText hidden={!imageError}>送信する画像を選択してください</FormHelperText>

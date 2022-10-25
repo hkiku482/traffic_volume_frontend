@@ -1,3 +1,4 @@
+import { Paper } from '@mui/material'
 import axios from 'axios'
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
@@ -23,7 +24,7 @@ const Home: NextPage = () => {
   }, [])
 
   return (
-    <GlobalMenu locations={locations}>
+    <GlobalMenu locations={locations} header={'全域'}>
       <TrafficVolumeChart
         locationAddress='全体'
         models={result.models}
