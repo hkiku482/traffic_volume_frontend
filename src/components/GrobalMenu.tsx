@@ -28,19 +28,19 @@ export const GlobalMenu = (props: { locations: Location[], header: string, child
             <MenuIcon />
           </IconButton>
           <Menu anchorEl={anchor} open={menu} onClose={() => { setMenu(false); setAnchor(null) }}>
-            <MenuItem key='all' >
-              <Link href='/'>
+            <Link href='/'>
+              <MenuItem key='all' >
                 <a>全域</a>
-              </Link>
-            </MenuItem>
+              </MenuItem>
+            </Link>
             {
               props.locations.map((location) => {
                 return (
-                  <MenuItem key={location.id} >
-                    <Link href={'/' + location.id}>
+                  <Link key={location.id} href={'/' + location.id}>
+                    <MenuItem>
                       <a>{location.address}</a>
-                    </Link>
-                  </MenuItem>
+                    </MenuItem>
+                  </Link>
                 )
               })
             }

@@ -1,4 +1,3 @@
-import { Paper } from '@mui/material'
 import axios from 'axios'
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'

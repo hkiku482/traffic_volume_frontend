@@ -17,19 +17,18 @@ const Home: NextPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    if (router.asPath !== router.route) {
-      setLocationId(String(router.query.location_id))
-    }
-  }, [router])
+    getLocations(setLocations)
+  }, [])
 
   useEffect(() => {
-    getLocations(setLocations)
-    const getResult = async () => {
-      const httpRes: { data: { results: Result } } = await axios.get(
-        process.env.NEXT_PUBLIC_API_ORIGIN + locationId
-      )
-      setResult(httpRes.data.results)
+    if (router.asPath !== router.route) {
+      if (String(router.query.location_id) !== '') {
+        setLocationId(String(router.query.location_id))
+      }
     }
+  }, [router.asPath, router.query.location_id, router.route])
+
+  useEffect(() => {
     const getAddress = async () => {
       if (locationId === undefined || locationId === '') return
       const httpRes: { data: { address: string } } = await axios.post(
@@ -40,8 +39,19 @@ const Home: NextPage = () => {
       )
       setAddress(httpRes.data.address)
     }
-    getResult()
     getAddress()
+  }, [locationId])
+
+  useEffect(() => {
+    const getResult = async () => {
+      if (locationId !== '') {
+        const httpRes: { data: { results: Result } } = await axios.get(
+          process.env.NEXT_PUBLIC_API_ORIGIN + locationId
+        )
+        setResult(httpRes.data.results)
+      }
+    }
+    getResult()
   }, [locationId])
 
   return (
